@@ -61,7 +61,7 @@ function WelcomePage() {
             <CardHeader>
               <CardTitle>开始测评</CardTitle>
               <CardDescription>
-                请填写面试者信息。点击"开始"后将随机抽取题目，计时立即开始。
+                请填写候选人信息。点击"开始"后将随机抽取题目，计时立即开始。
               </CardDescription>
             </CardHeader>
             <CardContent>
