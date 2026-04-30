@@ -88,7 +88,7 @@ function WelcomePage() {
                   />
                 </div>
                 <Button type="submit" className="w-full" size="lg">
-                  开始面试
+                  开始测评
                 </Button>
               </form>
             </CardContent>
