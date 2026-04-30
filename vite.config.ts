@@ -6,4 +6,17 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+export default defineConfig({
+  vite: {
+    optimizeDeps: {
+      // Pre-bundle heavy deps so the first navigation to /interview doesn't 504
+      // while Vite optimizes them on demand.
+      include: [
+        "@monaco-editor/react",
+        "react-markdown",
+        "remark-gfm",
+        "rehype-raw",
+      ],
+    },
+  },
+});
