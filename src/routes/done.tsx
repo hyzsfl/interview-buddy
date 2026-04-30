@@ -24,7 +24,7 @@ function DonePage() {
           <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
             <CheckCircle2 className="h-9 w-9 text-primary" />
           </div>
-          <CardTitle className="text-2xl">面试已提交</CardTitle>
+          <CardTitle className="text-2xl">测评已提交</CardTitle>
           <CardDescription>
             作答结果已保存到本地。可将文件提交给 AI 进行评分分析。
           </CardDescription>
