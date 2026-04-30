@@ -49,7 +49,7 @@ function WelcomePage() {
             </CardHeader>
             <CardContent className="flex gap-2">
               <Button onClick={() => navigate({ to: "/interview" })}>
-                继续面试
+                继续测评
               </Button>
               <Button variant="outline" onClick={endInterview}>
                 放弃并开始新的
