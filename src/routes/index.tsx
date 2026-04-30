@@ -1,26 +1,121 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
+import { useInterview } from "@/context/InterviewContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ALL_PROBLEMS } from "@/lib/problems";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: WelcomePage,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function WelcomePage() {
+  const navigate = useNavigate();
+  const { startInterview, session, endInterview } = useInterview();
+  const [name, setName] = useState("");
+  const [position, setPosition] = useState("");
 
-function Index() {
-  return <PlaceholderIndex />;
+  const categories = Array.from(new Set(ALL_PROBLEMS.map((p) => p.category)));
+
+  function handleStart(e: React.FormEvent) {
+    e.preventDefault();
+    if (!name.trim() || !position.trim()) return;
+    startInterview(name.trim(), position.trim());
+    navigate({ to: "/interview" });
+  }
+
+  return (
+    <main className="min-h-screen bg-background px-4 py-12">
+      <div className="mx-auto max-w-2xl space-y-8">
+        <header className="space-y-3 text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground">
+            LeetCode 模拟面试
+          </h1>
+          <p className="text-muted-foreground">
+            随机抽取 2 道不同分类的热题100中等题 · 任意语言作答 · 提交后导出 JSON
+          </p>
+        </header>
+
+        {session ? (
+          <Card className="border-primary/40">
+            <CardHeader>
+              <CardTitle>检测到未完成的面试</CardTitle>
+              <CardDescription>
+                {session.candidateName} · {session.position} · 已开始于{" "}
+                {new Date(session.startedAt).toLocaleString()}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex gap-2">
+              <Button onClick={() => navigate({ to: "/interview" })}>
+                继续面试
+              </Button>
+              <Button variant="outline" onClick={endInterview}>
+                放弃并开始新的
+              </Button>
+            </CardContent>
+          </Card>
+        ) : (
+          <Card>
+            <CardHeader>
+              <CardTitle>开始面试</CardTitle>
+              <CardDescription>
+                请填写面试者信息。点击"开始"后将随机抽取题目，计时立即开始。
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleStart} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">姓名</Label>
+                  <Input
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="例如：张三"
+                    required
+                    autoFocus
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="position">应聘岗位</Label>
+                  <Input
+                    id="position"
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                    placeholder="例如：后端工程师"
+                    required
+                  />
+                </div>
+                <Button type="submit" className="w-full" size="lg">
+                  开始面试
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        )}
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">题库概览</CardTitle>
+            <CardDescription>
+              共 {ALL_PROBLEMS.length} 道中等难度题目，覆盖 {categories.length} 个分类
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-1.5">
+              {categories.map((c) => (
+                <span
+                  key={c}
+                  className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground"
+                >
+                  {c} ({ALL_PROBLEMS.filter((p) => p.category === c).length})
+                </span>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </main>
+  );
 }
