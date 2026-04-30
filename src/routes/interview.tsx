@@ -128,7 +128,7 @@ function InterviewPage() {
       <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>确认提交面试？</AlertDialogTitle>
+            <AlertDialogTitle>确认提交测评？</AlertDialogTitle>
             <AlertDialogDescription asChild>
               <div className="space-y-2">
                 <div>提交后将自动下载 JSON 文件并清除当前作答记录。</div>
