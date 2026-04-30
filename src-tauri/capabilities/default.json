@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nicepkg/tauri-schema/refs/heads/main/core/schema.json",
+  "identifier": "default",
+  "description": "Default permissions for interview-buddy",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "shell:allow-open"
+  ]
+}
