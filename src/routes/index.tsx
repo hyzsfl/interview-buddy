@@ -31,7 +31,7 @@ function WelcomePage() {
       <div className="mx-auto max-w-2xl space-y-8">
         <header className="space-y-3 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground">
-            LeetCode 模拟面试
+            算法测评题
           </h1>
           <p className="text-muted-foreground">
             随机抽取 2 道不同分类的热题100中等题 · 任意语言作答 · 提交后导出 JSON
@@ -41,7 +41,7 @@ function WelcomePage() {
         {session ? (
           <Card className="border-primary/40">
             <CardHeader>
-              <CardTitle>检测到未完成的面试</CardTitle>
+              <CardTitle>检测到未完成的测评</CardTitle>
               <CardDescription>
                 {session.candidateName} · {session.position} · 已开始于{" "}
                 {new Date(session.startedAt).toLocaleString()}
@@ -49,7 +49,7 @@ function WelcomePage() {
             </CardHeader>
             <CardContent className="flex gap-2">
               <Button onClick={() => navigate({ to: "/interview" })}>
-                继续面试
+                继续测评
               </Button>
               <Button variant="outline" onClick={endInterview}>
                 放弃并开始新的
@@ -59,15 +59,15 @@ function WelcomePage() {
         ) : (
           <Card>
             <CardHeader>
-              <CardTitle>开始面试</CardTitle>
+              <CardTitle>开始测评</CardTitle>
               <CardDescription>
-                请填写面试者信息。点击"开始"后将随机抽取题目，计时立即开始。
+                请填写候选人信息。点击"开始"后将随机抽取题目，计时立即开始。
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleStart} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">姓名</Label>
+                  <Label htmlFor="name">候选人姓名</Label>
                   <Input
                     id="name"
                     value={name}
@@ -88,7 +88,7 @@ function WelcomePage() {
                   />
                 </div>
                 <Button type="submit" className="w-full" size="lg">
-                  开始面试
+                  开始测评
                 </Button>
               </form>
             </CardContent>
