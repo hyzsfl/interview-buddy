@@ -17,7 +17,7 @@ const POSITION_OPTIONS = [
   "DevOps 工程师",
 ];
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ALL_PROBLEMS } from "@/lib/problems";
+
 
 export const Route = createFileRoute("/")({
   component: WelcomePage,
@@ -29,7 +29,7 @@ function WelcomePage() {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("全栈工程师");
 
-  const categories = Array.from(new Set(ALL_PROBLEMS.map((p) => p.category)));
+  
 
   function handleStart(e: React.FormEvent) {
     e.preventDefault();
