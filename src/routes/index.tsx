@@ -4,6 +4,18 @@ import { useInterview } from "@/context/InterviewContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+const POSITION_OPTIONS = [
+  "全栈工程师",
+  "前端工程师",
+  "后端工程师",
+  "移动端工程师",
+  "数据工程师",
+  "算法工程师",
+  "测试工程师",
+  "DevOps 工程师",
+];
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ALL_PROBLEMS } from "@/lib/problems";
 
@@ -15,7 +27,7 @@ function WelcomePage() {
   const navigate = useNavigate();
   const { startInterview, session, endInterview } = useInterview();
   const [name, setName] = useState("");
-  const [position, setPosition] = useState("");
+  const [position, setPosition] = useState("全栈工程师");
 
   const categories = Array.from(new Set(ALL_PROBLEMS.map((p) => p.category)));
 
@@ -79,13 +91,18 @@ function WelcomePage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="position">应聘岗位</Label>
-                  <Input
-                    id="position"
-                    value={position}
-                    onChange={(e) => setPosition(e.target.value)}
-                    placeholder="例如：后端工程师"
-                    required
-                  />
+                  <Select value={position} onValueChange={setPosition}>
+                    <SelectTrigger id="position">
+                      <SelectValue placeholder="请选择岗位" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {POSITION_OPTIONS.map((opt) => (
+                        <SelectItem key={opt} value={opt}>
+                          {opt}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 <Button type="submit" className="w-full" size="lg">
                   开始测评
