@@ -17,7 +17,7 @@ const POSITION_OPTIONS = [
   "DevOps 工程师",
 ];
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ALL_PROBLEMS } from "@/lib/problems";
+
 
 export const Route = createFileRoute("/")({
   component: WelcomePage,
@@ -29,7 +29,7 @@ function WelcomePage() {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("全栈工程师");
 
-  const categories = Array.from(new Set(ALL_PROBLEMS.map((p) => p.category)));
+  
 
   function handleStart(e: React.FormEvent) {
     e.preventDefault();
@@ -111,27 +111,6 @@ function WelcomePage() {
             </CardContent>
           </Card>
         )}
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">题库概览</CardTitle>
-            <CardDescription>
-              共 {ALL_PROBLEMS.length} 道中等难度题目，覆盖 {categories.length} 个分类
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-1.5">
-              {categories.map((c) => (
-                <span
-                  key={c}
-                  className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground"
-                >
-                  {c} ({ALL_PROBLEMS.filter((p) => p.category === c).length})
-                </span>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </main>
   );
