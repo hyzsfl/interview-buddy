@@ -111,27 +111,6 @@ function WelcomePage() {
             </CardContent>
           </Card>
         )}
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">题库概览</CardTitle>
-            <CardDescription>
-              共 {ALL_PROBLEMS.length} 道中等难度题目，覆盖 {categories.length} 个分类
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-1.5">
-              {categories.map((c) => (
-                <span
-                  key={c}
-                  className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground"
-                >
-                  {c} ({ALL_PROBLEMS.filter((p) => p.category === c).length})
-                </span>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </main>
   );
