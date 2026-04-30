@@ -67,7 +67,7 @@ function WelcomePage() {
             <CardContent>
               <form onSubmit={handleStart} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">姓名</Label>
+                  <Label htmlFor="name">候选人姓名</Label>
                   <Input
                     id="name"
                     value={name}
