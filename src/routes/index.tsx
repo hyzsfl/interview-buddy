@@ -41,7 +41,7 @@ function WelcomePage() {
         {session ? (
           <Card className="border-primary/40">
             <CardHeader>
-              <CardTitle>检测到未完成的面试</CardTitle>
+              <CardTitle>检测到未完成的测评</CardTitle>
               <CardDescription>
                 {session.candidateName} · {session.position} · 已开始于{" "}
                 {new Date(session.startedAt).toLocaleString()}
