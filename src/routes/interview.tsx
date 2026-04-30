@@ -98,9 +98,6 @@ function InterviewPage() {
             {session.answers.map((a, i) => (
               <TabsTrigger key={i} value={String(i)} className="gap-2">
                 <span>题目 {i + 1}</span>
-                <span className="text-xs text-muted-foreground">
-                  · {a.problem.category}
-                </span>
                 <span className="text-xs font-mono tabular-nums text-muted-foreground">
                   {formatDuration(a.timeSpentSeconds)}
                 </span>
