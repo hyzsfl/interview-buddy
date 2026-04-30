@@ -30,9 +30,9 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LeetCode 模拟面试 · 工程师笔试" },
-      { name: "description", content: "随机抽取 LeetCode 热题100 中等题，本地化在线笔试与作答记录导出。" },
-      { property: "og:title", content: "LeetCode 模拟面试" },
+      { title: "算法测评题 · 工程师笔试" },
+      { name: "description", content: "随机抽取热题100中等题，本地化在线笔试与作答记录导出。" },
+      { property: "og:title", content: "算法测评题" },
       { property: "og:description", content: "随机抽取热题100中等题，作答后下载 JSON 交给 AI 评分。" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

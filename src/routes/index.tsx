@@ -31,7 +31,7 @@ function WelcomePage() {
       <div className="mx-auto max-w-2xl space-y-8">
         <header className="space-y-3 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground">
-            LeetCode 模拟面试
+            算法测评题
           </h1>
           <p className="text-muted-foreground">
             随机抽取 2 道不同分类的热题100中等题 · 任意语言作答 · 提交后导出 JSON
