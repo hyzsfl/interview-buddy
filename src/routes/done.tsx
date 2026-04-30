@@ -47,7 +47,7 @@ function DonePage() {
           </div>
           <div className="flex gap-2">
             <Button className="flex-1" onClick={() => navigate({ to: "/" })}>
-              开始新的面试
+              开始新的测评
             </Button>
           </div>
         </CardContent>
