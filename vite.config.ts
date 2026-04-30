@@ -7,6 +7,7 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  cloudflare: false,
   vite: {
     base: process.env.TAURI_ENV_PLATFORM ? "./" : undefined,
     optimizeDeps: {
