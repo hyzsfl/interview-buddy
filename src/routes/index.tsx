@@ -46,7 +46,7 @@ function WelcomePage() {
             算法测评题
           </h1>
           <p className="text-muted-foreground">
-            随机抽取 2 道不同分类的热题100中等题 · 任意语言作答 · 提交后导出 JSON
+            随机抽取 2 道中等难度题目任选其一 · 任意语言作答 · 提交后导出 JSON
           </p>
         </header>
 
