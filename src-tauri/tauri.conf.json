@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "identifier": "com.interview-buddy.app",
   "build": {
-    "frontendDist": "../dist",
+    "frontendDist": "../dist/client",
     "devUrl": "http://localhost:8080",
     "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run dev"
