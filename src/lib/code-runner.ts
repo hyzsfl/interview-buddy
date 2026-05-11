@@ -89,7 +89,23 @@ function runJavaScriptInWorker({ code, stdin }: RunCodeOptions): Promise<RunCode
 
         try {
           const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
-          const run = new AsyncFunction("stdin", "input", "readInput", code);
+          const run = new AsyncFunction("stdin", "input", "readInput", \`
+            \${code}
+
+            const __interviewBuddyRunSolution = async () => {
+              if (!stdin.trim() || typeof Solution === "undefined") return undefined;
+              const solution = new Solution();
+              const methodName = Object.getOwnPropertyNames(Solution.prototype)
+                .find((name) => name !== "constructor" && typeof solution[name] === "function");
+              if (!methodName) throw new Error("Solution 中没有可调用的公开方法");
+              const method = solution[methodName].bind(solution);
+              const payload = JSON.parse(stdin);
+              const args = method.length <= 1 ? [payload] : payload;
+              return await method(...args);
+            };
+
+            return await __interviewBuddyRunSolution();
+          \`);
           const value = await run(stdin, stdin, () => stdin);
           if (typeof value !== "undefined") logs.push(formatValue(value));
           self.postMessage({ status: "success", stdout: logs.join("\\n"), stderr: "" });
