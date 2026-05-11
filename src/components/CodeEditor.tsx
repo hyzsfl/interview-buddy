@@ -128,7 +128,7 @@ export function CodeEditor({ language, code, onLanguageChange, onCodeChange }: C
             onChange={(event) => setStdin(event.target.value)}
             spellCheck={false}
             className="h-28 resize-none font-mono text-xs"
-            placeholder={'例如：["eat","tea","tan"]'}
+            placeholder={'直接填 LeetCode 参数 JSON，例如：["eat","tea","tan"]'}
           />
         </div>
         <div className="min-h-0 p-3">
