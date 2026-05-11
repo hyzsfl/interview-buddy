@@ -123,12 +123,16 @@ export function CodeEditor({ language, code, onLanguageChange, onCodeChange }: C
               <RotateCcw className="h-3.5 w-3.5" />
             </Button>
           </div>
+          <p className="mb-2 text-xs leading-relaxed text-muted-foreground">
+            填写 JSON：单参数直接填值；多参数按函数顺序包成数组，例如 nums = [1,2,3], k = 3 填
+            [[1,2,3],3]。
+          </p>
           <Textarea
             value={stdin}
             onChange={(event) => setStdin(event.target.value)}
             spellCheck={false}
-            className="h-28 resize-none font-mono text-xs"
-            placeholder={'直接填 LeetCode 参数 JSON，例如：["eat","tea","tan"]'}
+            className="h-20 resize-none font-mono text-xs"
+            placeholder={"例如：[[1,2,3],3]"}
           />
         </div>
         <div className="min-h-0 p-3">
